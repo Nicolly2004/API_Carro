@@ -14,5 +14,20 @@ buscarTodos: async(req,res) => {
     }
 
     res.json(json);
+},
+
+buscarUm: async(req,res) => {
+    let json = {error:'',result:[]};
+
+    let codigo = req.params.codigo; //para pegar p parâmetro na requisição
+    let carro = await CarroService.buscarUm(codigo);
+
+    if(carro){
+        json.result = carro;
+    }
+
+    res.json(json);
 }
+
+
 }
